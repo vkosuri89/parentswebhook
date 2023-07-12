@@ -65,6 +65,8 @@ app.use('/.well-known/microsoft-identity-association.json', (req, res) => {
     ]
   });
 
+  res.removeHeader('Transfer-Encoding');
+
   res.writeHead(200, {
     'Content-Type': 'application/json',
     'Content-Length': Buffer.byteLength(identityString, 'utf8')
