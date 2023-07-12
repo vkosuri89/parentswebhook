@@ -56,16 +56,15 @@ app.post('/parents', (req, resp)=>{
       resp.send("post endpoint");
     }
 });
-app.get('/.well-known/microsoft-identity-association.json', (req, resp) => {
+app.get('/.well-known/microsoft-identity-association.json', (req, res) => {
   console.log("verification endpoint", req.headers);
-  const respJson = {
-    "associatedApplications": [
-      {
-        "applicationId": "582772b6-6871-4ece-bbf0-d631bb27e755"
-      }
-    ]
-  };
-  resp.setHeader( 'Content-Type', 'application/json' )
+  // resp.setHeader( 'Content-Type', 'application/json' )
+  // const jsonData = require('./microsoft-identity-association.json');
+  // resp.send(jsonData);
   const jsonData = require('./microsoft-identity-association.json');
-  resp.send(jsonData);
+  const jsonStr = JSON.stringify(jsonData);
+
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Content-Length', Buffer.byteLength(jsonStr));
+  res.send(jsonStr);
 })
