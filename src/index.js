@@ -56,3 +56,14 @@ app.post('/parents', (req, resp)=>{
       resp.send("post endpoint");
     }
 });
+app.get('/parents/well-known/microsoft-identity-association.json', (req, resp) => {
+  console.log("verification endpoint", req.headers);
+  const respJson = {
+    "associatedApplications": [
+      {
+        "applicationId": "582772b6-6871-4ece-bbf0-d631bb27e755"
+      }
+    ]
+  };
+  resp.send(respJson);
+})
