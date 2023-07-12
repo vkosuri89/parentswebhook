@@ -50,9 +50,9 @@ app.post('/parents', (req, resp)=>{
       resp.set('Content-Type', 'text/plain');
       resp.status(200).send(validationToken);
     } else {
-      approvalId = req.body.value[0].id;
-      // Check whether it is correct approval ID
-      lib.processRequest(approvalId);
+      // approvalId = req.body.value[0].id;
+      // // Check whether it is correct approval ID
+      // lib.processRequest(approvalId);
       resp.send("post endpoint");
     }
 });
