@@ -65,5 +65,7 @@ app.get('/.well-known/microsoft-identity-association.json', (req, resp) => {
       }
     ]
   };
-  resp.send(respJson);
+  resp.writeHead(200, { 'Content-Type': 'application/json' })
+  resp.write(JSON.stringify(respJson))
+  resp.end()
 })
