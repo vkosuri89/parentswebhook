@@ -56,7 +56,7 @@ app.post('/parents', (req, resp)=>{
       resp.send("post endpoint");
     }
 });
-app.get('/parents/well-known/microsoft-identity-association.json', (req, resp) => {
+app.get('/parents/.well-known/microsoft-identity-association.json', (req, resp) => {
   console.log("verification endpoint", req.headers);
   const respJson = {
     "associatedApplications": [
